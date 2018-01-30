@@ -1,0 +1,207 @@
+$blue: #2980b9;
+$purple: #4747a8;
+$green: #00b894;
+$dark_red: #7d3333;
+
+.App {
+  text-align: center;
+
+  .header {
+    background-color: $blue;
+    color: white;
+    text-align: center;
+    height: 120px;
+    padding: 20px;
+
+    .btn {
+      margin-right: 10px;
+    }
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+
+    .rectangle-area {
+      position: relative;
+      width: 100%;
+
+      .rectangles {
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        height: 100%;
+
+        .clear-layout {
+          background-color: $dark_red;
+          color: white;
+          display: block;
+          position: absolute;
+          top: -30px;
+          left: 5px;
+          font-size: 12px;
+
+          i {
+            padding-right: 2px;
+          }
+        }
+
+        .resize {
+          color: white;
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 5px;
+          box-shadow: 5px 8px 12px -4px rgba(74, 74, 74, 0.23);
+
+          .drag-handler {
+            border: 1px solid #fff;
+            position: absolute;
+            padding: 8px;
+            border-radius: 15px;
+            cursor: -webkit-grab;
+          }
+
+          .delete {
+            position: absolute;
+            top: 3px;
+            left: 5px;
+            width: 10px;
+            height: 10px;
+            cursor: pointer;
+          }
+
+          .color-handler {
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+            cursor: pointer;
+          }
+
+          .resize-handler {
+            bottom: 5px;
+            right: 5px;
+            position: absolute;
+            cursor: se-resize;
+          }
+        }
+      }
+    }
+
+    .layouts {
+      width: 300px;
+      min-height: 800px;
+      color: #fff;
+      background-color: $purple;
+
+      .add-layout {
+        background-color: $green;
+        color: #fff;
+        margin-top: 10px;
+      }
+
+      .list {
+        background-color: lighten($purple, 25%);
+        padding: 10px;
+        width: 80%;
+        margin: 5px auto;
+        border-radius: 25px;
+
+        h4 {
+          margin: 0;
+          padding: 5px 0 0 5px;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+        .btn {
+          margin-right: 5px;
+        }
+      }
+
+      .helper-info {
+        border: 1px solid #fff;
+        margin: 40px 10px 10px;
+
+        h5 {
+          margin-bottom: 5px;
+        }
+
+        ul {
+          font-size: 12px;
+          list-style: none;
+          text-align: left;
+          padding: 0 15px;
+
+          li {
+            margin-bottom: 10px;
+
+            span {
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .color-picker {
+    position: fixed;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background: hsla(0,0%,100%,.93);
+
+    h3 {
+      text-align: center;
+    }
+
+    ul {
+      list-style: none;
+
+      li {
+        display: inline-block;
+        margin-right: 10px;
+
+        span {
+          width: 80px;
+          height: 80px;
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+
+/* GLOBAL CSS */
+.flex-start {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.flex-space {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  background-color: white;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  padding: 5px 10px;
+  position: relative;
+  cursor: pointer;
+}
