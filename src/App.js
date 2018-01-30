@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment} from 'react';
 import update from 'immutability-helper';
 import './App.scss';
 import ResizableBox from './components/ResizableBox';
@@ -177,7 +177,7 @@ class App extends Component {
           <div className="rectangle-area"
             ref={(area) => { this.rectangleArea = area; }}>
               {rectangles.length > 0 ? (
-                <div className="rectangles">
+                <Fragment>
                     <span className="btn clear-layout" onClick={this.clearLayout}>
                       <i className="fa fa-times" aria-hidden="true"></i>
                       Clear Layout
@@ -195,7 +195,7 @@ class App extends Component {
                         );
                       })
                     }
-                  </div>
+                  </Fragment>
                 ) : (
                   <p>Click on add rectangle above to add rectangles.</p>
                 )

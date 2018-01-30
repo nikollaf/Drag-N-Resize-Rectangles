@@ -26,65 +26,58 @@ $dark_red: #7d3333;
       position: relative;
       width: 100%;
 
-      .rectangles {
+      .clear-layout {
+        background-color: $dark_red;
+        color: white;
+        display: block;
+        position: absolute;
+        top: -30px;
+        left: 5px;
+        font-size: 12px;
+
+        i {
+          padding-right: 2px;
+        }
+      }
+
+      .resize {
+        color: white;
+        position: absolute;
         display: flex;
-        justify-content: flex-start;
-        width: 100%;
-        height: 100%;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        box-shadow: 5px 8px 12px -4px rgba(74, 74, 74, 0.23);
 
-        .clear-layout {
-          background-color: $dark_red;
-          color: white;
-          display: block;
+        .drag-handler {
+          border: 1px solid #fff;
           position: absolute;
-          top: -30px;
-          left: 5px;
-          font-size: 12px;
-
-          i {
-            padding-right: 2px;
-          }
+          padding: 8px;
+          border-radius: 15px;
+          cursor: -webkit-grab;
         }
 
-        .resize {
-          color: white;
+        .delete {
           position: absolute;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 5px;
-          box-shadow: 5px 8px 12px -4px rgba(74, 74, 74, 0.23);
+          top: 3px;
+          left: 5px;
+          width: 10px;
+          height: 10px;
+          cursor: pointer;
+        }
 
-          .drag-handler {
-            border: 1px solid #fff;
-            position: absolute;
-            padding: 8px;
-            border-radius: 15px;
-            cursor: -webkit-grab;
-          }
+        .color-handler {
+          position: absolute;
+          bottom: 5px;
+          left: 5px;
+          cursor: pointer;
+        }
 
-          .delete {
-            position: absolute;
-            top: 3px;
-            left: 5px;
-            width: 10px;
-            height: 10px;
-            cursor: pointer;
-          }
-
-          .color-handler {
-            position: absolute;
-            bottom: 5px;
-            left: 5px;
-            cursor: pointer;
-          }
-
-          .resize-handler {
-            bottom: 5px;
-            right: 5px;
-            position: absolute;
-            cursor: se-resize;
-          }
+        .resize-handler {
+          bottom: 5px;
+          right: 5px;
+          position: absolute;
+          cursor: se-resize;
         }
       }
     }
