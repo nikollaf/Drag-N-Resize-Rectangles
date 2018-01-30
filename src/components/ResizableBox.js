@@ -113,7 +113,7 @@ class ResizableComponent extends Component {
     pageX = pageX > 0 ? pageX : 0;
     pageY = pageY > 0 ? pageY : 0;
 
-    if (e.pageX + (this.state.boxWidth / 2) > this.state.maxWidth) {
+    if ((e.pageX + (this.state.boxWidth / 2)) > this.state.maxWidth) {
       pageX = this.state.position.x;
     }
 
@@ -156,10 +156,8 @@ class ResizableComponent extends Component {
 
 		return (
       <Fragment>
-        <div className="resize"
-          ref={(box) => { this.box = box; }}
-          style={outerDivStyle}>
-          <span className="delete fa fa-trash-o fa-1" onClick={() => this.props.removeRectangles(this.props.id)}></span>
+        <div className="resize" style={outerDivStyle}>
+          <span className="delete fa fa-trash-o fa-1" onClick={() => this.props.removeRectangle(this.props.id)}></span>
           <span className="drag-handler fa fa-hand-rock-o fa-2" onMouseDown={this.startDrag}></span>
           <span className="resize-handler fa fa-arrows-alt fa-1" onMouseDown={this.startResize}></span>
           <span className="color-handler fa fa-adjust fa-1" onClick={this.changeBackgroundColor}></span>

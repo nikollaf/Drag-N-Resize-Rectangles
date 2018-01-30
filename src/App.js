@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import update from 'immutability-helper';
 import './App.scss';
 import ResizableBox from './components/ResizableBox';
-import Layouts from './components/Layouts';
+import LayoutNav from './components/LayoutNav';
 import Header from './components/Header';
 import ColorPicker from './components/ColorPicker';
 import { getFromLS, saveToLS } from './utils/localStorage';
@@ -20,7 +20,7 @@ class App extends Component {
 
     this.addRectangles = this.addRectangles.bind(this);
     this.updateRectangle = this.updateRectangle.bind(this);
-    this.removeRectangles = this.removeRectangles.bind(this);
+    this.removeRectangle = this.removeRectangle.bind(this);
     this.saveLayout = this.saveLayout.bind(this);
     this.deleteLayout = this.deleteLayout.bind(this);
     this.switchLayout = this.switchLayout.bind(this);
@@ -105,7 +105,7 @@ class App extends Component {
     });
   }
 
-  removeRectangles(id) {
+  removeRectangle(id) {
     const layouts = update(this.state.layouts, {
       [this.state.currentLayout]: {rectangles: {$splice: [[id, 1]]}}
     });
@@ -122,11 +122,7 @@ class App extends Component {
       return;
     }
 
-    const arrLayouts = this.state.layouts,
-      lastId = rectangle.length ? 0 : arrLayouts[arrLayouts.length - 1].id + 1;
-
     const newLayout = [{
-      id: lastId,
       title: layoutTitle,
       rectangles: rectangle.length ? rectangle : []
     }];
@@ -134,7 +130,7 @@ class App extends Component {
     const layouts = update(this.state.layouts, {$push: newLayout});
 
     this.setState({
-      currentLayout: lastId,
+      currentLayout: layouts.length - 1,
       layouts
     });
   }
@@ -194,7 +190,7 @@ class App extends Component {
                             data={data}
                             maxWidth={this.state.maxWidth}
                             updateRectangle={this.updateRectangle}
-                            removeRectangles={this.removeRectangles}>
+                            removeRectangle={this.removeRectangle}>
                           </ResizableBox>
                         );
                       })
@@ -205,7 +201,7 @@ class App extends Component {
                 )
               }
           </div>
-          <Layouts
+          <LayoutNav
               layouts={this.state.layouts}
               newLayout={this.newLayout}
               deleteLayout={this.deleteLayout}

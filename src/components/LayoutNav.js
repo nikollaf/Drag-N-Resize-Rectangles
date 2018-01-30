@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-export default class Layouts extends Component {
-	constructor(props) {
-		super(props);
+export default class LayoutNav extends Component {
+	constructor() {
+		super();
 
 		this.state = {
-			data: props.layouts
+			data: []
 		}
 	}
 
@@ -19,7 +19,7 @@ export default class Layouts extends Component {
 
 	_renderList() {
 		const data = this.state.data;
-
+	
 		return data.map((list, index) => {
 			return <List
 								key={index}
@@ -43,36 +43,14 @@ export default class Layouts extends Component {
 	}
 }
 
-class List extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			title: props.list.title
-		}
-	}
-
-	componentWillReceiveProps(nextProps) {
-		if (nextProps.list !== this.props.list) {
-			this.setState({
-				title: nextProps.list.title
-			});
-		}
-	}
-
-	render() {
-		const state = this.state;
-
-		return (
-			<div className="list flex-space">
-				<h4 onClick={() => this.props.switchLayout(this.props.id)}>
-					{state.title}
-				</h4>
-        <button className="btn delete" onClick={() => this.props.deleteLayout(this.props.id)}>Delete</button>
-      </div>
-		)
-	}
-};
+const List = (props) => (
+		<div className="list flex-space">
+			<h4 onClick={() => props.switchLayout(props.id)}>
+				{props.list.title}
+			</h4>
+	    <button className="btn delete" onClick={() => props.deleteLayout(props.id)}>Delete</button>
+	  </div>
+)
 
 const Helper = () => (
  <div className="helper-info">
